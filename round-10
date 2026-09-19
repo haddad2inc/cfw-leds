@@ -1,0 +1,357 @@
+اولا تم معرفه سبب المشكله وهو انني قمت بنسخ مجلد البناء من القرص القديم للينكس 5 الى القرص الجديد الخاص بلينكس8 فتم معالجه المشكله بعمل ارتباط مباشر بالمجلد القديم  وتم انشاء النسخه الجديده وتثبيت sysupgrade.bin وبعد دقيقه  على تثبيته واللمبه البيضاء ثابته وطفئت واشتغلت مره اخرى واستمرت مايقارب دقيقه وانفطئت ورجعت وهكذا  الان هذا ناتج السكريبت block-4c.sh وهو 
+ha-linux  ~/     ./block-4c.sh
+
+==================== 1) التعديل المحلي على generic.mk — المشتبه الأول ====================
+MD5_generic.mk_الآن=e2240d752da8839adb244ae5f998c788
+MD5_generic.mk_في_HEAD=e2240d752da8839adb244ae5f998c788
+MD5_المرجع_الصحيح=e2240d752da8839adb244ae5f998c788
+-- حجم الفرق مقابل HEAD --
+-- الفرق كاملًا (أول 80 سطرًا) --
+-- وصفة الجهاز في شجرة العمل الآن --
+867:define Device/comfast_cf-wa350
+868-  SOC := qca9563
+869-  DEVICE_VENDOR := COMFAST
+870-  DEVICE_MODEL := CF-WA350
+871-  DEVICE_PACKAGES := kmod-ath10k-ct ath10k-firmware-qca9888-ct \
+872-	kmod-dsa-qca8k kmod-phy-qca83xx cfw-leds -swconfig -uboot-envtools
+873-  IMAGE_SIZE := 16000k
+874-endef
+875-TARGET_DEVICES += comfast_cf-wa350
+876-
+877-define Device/comfast_cf-wr650ac-v1
+-- وصفة الجهاز في HEAD المدفوع --
+867:define Device/comfast_cf-wa350
+868-  SOC := qca9563
+869-  DEVICE_VENDOR := COMFAST
+870-  DEVICE_MODEL := CF-WA350
+871-  DEVICE_PACKAGES := kmod-ath10k-ct ath10k-firmware-qca9888-ct \
+872-	kmod-dsa-qca8k kmod-phy-qca83xx cfw-leds -swconfig -uboot-envtools
+873-  IMAGE_SIZE := 16000k
+874-endef
+875-TARGET_DEVICES += comfast_cf-wa350
+876-
+877-define Device/comfast_cf-wr650ac-v1
+
+==================== 2) تعديلات حزمة cfw-leds (إصلاحات الجولة 9 غير المدفوعة) ====================
+ package/utils/cfw-leds/LICENSE             | 0
+ package/utils/cfw-leds/Makefile            | 0
+ package/utils/cfw-leds/files/cfw-leds.init | 0
+ package/utils/cfw-leds/files/cfw_led_ctrl  | 0
+ 4 files changed, 0 insertions(+), 0 deletions(-)
+-- حالة LICENSE في الشجرة وفي HEAD --
+-rwxr-xr-x 1 ha-linux ha-linux 699 Sep 19 00:02 package/utils/cfw-leds/LICENSE
+LICENSE_in_HEAD=1
+PKG_LICENSE_FILES_in_HEAD_Makefile=1
+-- هل HEAD يحوي إصلاحات الجولة 9؟ --
+POLL_in_HEAD_cfw_led_ctrl=1
+stderr_in_HEAD_init=1
+24999_in_HEAD_dts=0
+MD5_DTS_العمل=2dc95e2be1f754b0f75573dc34d17972
+MD5_DTS_HEAD=2dc95e2be1f754b0f75573dc34d17972
+
+==================== 3) سجل البناء build.log ====================
+LOG=build.log
+-rw-rw-r-- 1 ha-linux ha-linux 4426644 Sep 19 03:44 build.log
+عدد_الأسطر=11133
+-- الأخطاء (آخر 30 سطر أخطاء) --
+10691:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar9344_tplink_tl-wdr3600-v1.dtb: Warning (i2c_bus_reg): Failed prerequisite 'reg_format'
+10692:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar9344_tplink_tl-wdr3600-v1.dtb: Warning (spi_bus_reg): Failed prerequisite 'reg_format'
+10711:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar9344_tplink_tl-wdr4300-v1.dtb: Warning (pci_device_reg): Failed prerequisite 'reg_format'
+10712:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar9344_tplink_tl-wdr4300-v1.dtb: Warning (pci_device_bus_num): Failed prerequisite 'reg_format'
+10713:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar9344_tplink_tl-wdr4300-v1.dtb: Warning (i2c_bus_reg): Failed prerequisite 'reg_format'
+10714:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar9344_tplink_tl-wdr4300-v1.dtb: Warning (spi_bus_reg): Failed prerequisite 'reg_format'
+10733:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar9344_tplink_tl-wdr4300-v1-il.dtb: Warning (pci_device_reg): Failed prerequisite 'reg_format'
+10734:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar9344_tplink_tl-wdr4300-v1-il.dtb: Warning (pci_device_bus_num): Failed prerequisite 'reg_format'
+10735:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar9344_tplink_tl-wdr4300-v1-il.dtb: Warning (i2c_bus_reg): Failed prerequisite 'reg_format'
+10736:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar9344_tplink_tl-wdr4300-v1-il.dtb: Warning (spi_bus_reg): Failed prerequisite 'reg_format'
+10755:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar9344_tplink_tl-wdr4310-v1.dtb: Warning (pci_device_reg): Failed prerequisite 'reg_format'
+10756:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar9344_tplink_tl-wdr4310-v1.dtb: Warning (pci_device_bus_num): Failed prerequisite 'reg_format'
+10757:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar9344_tplink_tl-wdr4310-v1.dtb: Warning (i2c_bus_reg): Failed prerequisite 'reg_format'
+10758:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar9344_tplink_tl-wdr4310-v1.dtb: Warning (spi_bus_reg): Failed prerequisite 'reg_format'
+10782:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_tplink_tl-wdr7500-v3.dtb: Warning (pci_device_reg): Failed prerequisite 'reg_format'
+10783:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_tplink_tl-wdr7500-v3.dtb: Warning (pci_device_bus_num): Failed prerequisite 'reg_format'
+10784:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_tplink_tl-wdr7500-v3.dtb: Warning (i2c_bus_reg): Failed prerequisite 'reg_format'
+10785:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_tplink_tl-wdr7500-v3.dtb: Warning (spi_bus_reg): Failed prerequisite 'reg_format'
+10812:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_tplink_tl-wr1043nd-v2.dtb: Warning (pci_device_reg): Failed prerequisite 'reg_format'
+10813:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_tplink_tl-wr1043nd-v2.dtb: Warning (pci_device_bus_num): Failed prerequisite 'reg_format'
+10814:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_tplink_tl-wr1043nd-v2.dtb: Warning (i2c_bus_reg): Failed prerequisite 'reg_format'
+10815:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_tplink_tl-wr1043nd-v2.dtb: Warning (spi_bus_reg): Failed prerequisite 'reg_format'
+10832:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_tplink_tl-wr1043nd-v3.dtb: Warning (pci_device_reg): Failed prerequisite 'reg_format'
+10833:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_tplink_tl-wr1043nd-v3.dtb: Warning (pci_device_bus_num): Failed prerequisite 'reg_format'
+10834:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_tplink_tl-wr1043nd-v3.dtb: Warning (i2c_bus_reg): Failed prerequisite 'reg_format'
+10835:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_tplink_tl-wr1043nd-v3.dtb: Warning (spi_bus_reg): Failed prerequisite 'reg_format'
+10861:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_tplink_tl-wr1045nd-v2.dtb: Warning (pci_device_reg): Failed prerequisite 'reg_format'
+10862:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_tplink_tl-wr1045nd-v2.dtb: Warning (pci_device_bus_num): Failed prerequisite 'reg_format'
+10863:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_tplink_tl-wr1045nd-v2.dtb: Warning (i2c_bus_reg): Failed prerequisite 'reg_format'
+10864:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_tplink_tl-wr1045nd-v2.dtb: Warning (spi_bus_reg): Failed prerequisite 'reg_format'
+-- أسطر cf-wa350 (آخر 25) --
+11035:cp /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/vmlinux-initramfs /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin
+[|                                                               ]   0/851   0%cat /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9563_comfast_cf-wa350.dtb >> /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin
+11041:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/staging_dir/host/bin/lzma e /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin -lc1 -lp2 -pb2  /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin.new
+11069:rm -f /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin
+11070:cp /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/vmlinux /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin
+11071:cat /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9563_comfast_cf-wa350.dtb >> /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin
+11072:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/staging_dir/host/bin/lzma e /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin -lc1 -lp2 -pb2  /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin.new
+11073:mkimage -A mips -O linux -T kernel -C lzma -a 0x80060000 -e 0x80060000 -n 'MIPS OpenWrt Linux-6.18.52'   -d /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin.new
+11080:mv /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin.new /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin
+11081:mkimage -A mips -O linux -T kernel -C lzma -a 0x80060000 -e 0x80060000 -n 'MIPS OpenWrt Linux-6.18.52'   -d /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin.new
+11088:mv /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin.new /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin
+11089:cp /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/bin/targets/ath79/generic/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin
+11090:[ -f /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin -a -f /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/root.squashfs ]
+11091:DEVICE_ID="comfast_cf-wa350" SOURCE_DATE_EPOCH=1789768095 FILE_NAME="openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin" FILE_DIR="/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp" FILE_TYPE="kernel" FILE_FILESYSTEM="initramfs" DEVICE_IMG_PREFIX="openwrt-ath79-generic-comfast_cf-wa350" DEVICE_VENDOR="COMFAST" DEVICE_MODEL="CF-WA350" DEVICE_VARIANT="" DEVICE_ALT0_VENDOR="" DEVICE_ALT0_MODEL="" DEVICE_ALT0_VARIANT="" DEVICE_ALT1_VENDOR="" DEVICE_ALT1_MODEL="" DEVICE_ALT1_VARIANT="" DEVICE_ALT2_VENDOR="" DEVICE_ALT2_MODEL="" DEVICE_ALT2_VARIANT="" DEVICE_ALT3_VENDOR="" DEVICE_ALT3_MODEL="" DEVICE_ALT3_VARIANT="" DEVICE_ALT4_VENDOR="" DEVICE_ALT4_MODEL="" DEVICE_ALT4_VARIANT="" DEVICE_ALT5_VENDOR="" DEVICE_ALT5_MODEL="" DEVICE_ALT5_VARIANT="" DEVICE_TITLE="COMFAST CF-WA350" DEVICE_PACKAGES="kmod-ath10k-ct ath10k-firmware-qca9888-ct kmod-dsa-qca8k kmod-phy-qca83xx cfw-leds -swconfig -uboot-envtools" TARGET="ath79" SUBTARGET="generic" VERSION_NUMBER="SNAPSHOT" VERSION_CODE="r36341+2-7f347425eb" SUPPORTED_DEVICES="comfast,cf-wa350" KERNEL_SIZE="" IMAGE_SIZE="16000k" /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/scripts/json_add_image_info.py /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/json_info_files/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin.json
+11092:dd if=/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin >> /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin
+11096:dd if=/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin of=/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.new bs=64k conv=sync
+11100:mv /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.new /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin
+11101:dd if=/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/root.squashfs >> /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin
+11105:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/staging_dir/host/bin/padjffs2 /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin  64
+11107:echo '{  "metadata_version": "1.1", "compat_version": "1.0",   "supported_devices":["comfast,cf-wa350"], "version": { "dist": "OpenWrt", "version": "SNAPSHOT", "revision": "r36341+2-7f347425eb", "target": "ath79/generic", "board": "comfast_cf-wa350" } }' | fwtool -I - /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin
+11108:sha256sum "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin" | cut -d" " -f1 > "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.sha256sum"
+11109:[ ! -s "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/key-build" -o ! -s "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/key-build.ucert" -o ! -s "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin" ] || { cp "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/key-build.ucert" "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.ucert" ; usign -S -m "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin" -s "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/key-build" -x "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.sig" ; ucert -A -c "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.ucert" -x "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.sig" ; fwtool -S "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.ucert" "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin" ; }
+11110:cp /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/bin/targets/ath79/generic/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin
+11111:DEVICE_ID="comfast_cf-wa350" SOURCE_DATE_EPOCH=1789768095 FILE_NAME="openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin" FILE_DIR="/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp" FILE_TYPE=sysupgrade FILE_FILESYSTEM="squashfs" DEVICE_IMG_PREFIX="openwrt-ath79-generic-comfast_cf-wa350" DEVICE_VENDOR="COMFAST" DEVICE_MODEL="CF-WA350" DEVICE_VARIANT="" DEVICE_ALT0_VENDOR="" DEVICE_ALT0_MODEL="" DEVICE_ALT0_VARIANT="" DEVICE_ALT1_VENDOR="" DEVICE_ALT1_MODEL="" DEVICE_ALT1_VARIANT="" DEVICE_ALT2_VENDOR="" DEVICE_ALT2_MODEL="" DEVICE_ALT2_VARIANT="" DEVICE_ALT3_VENDOR="" DEVICE_ALT3_MODEL="" DEVICE_ALT3_VARIANT="" DEVICE_ALT4_VENDOR="" DEVICE_ALT4_MODEL="" DEVICE_ALT4_VARIANT="" DEVICE_ALT5_VENDOR="" DEVICE_ALT5_MODEL="" DEVICE_ALT5_VARIANT="" DEVICE_TITLE="COMFAST CF-WA350" DEVICE_PACKAGES="kmod-ath10k-ct ath10k-firmware-qca9888-ct kmod-dsa-qca8k kmod-phy-qca83xx cfw-leds -swconfig -uboot-envtools" TARGET="ath79" SUBTARGET="generic" VERSION_NUMBER="SNAPSHOT" VERSION_CODE="r36341+2-7f347425eb" SUPPORTED_DEVICES="comfast,cf-wa350" KERNEL_SIZE="" IMAGE_SIZE="16000k" /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/scripts/json_add_image_info.py /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/json_info_files/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.json
+11112:IPKG_INSTROOT=/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/root.orig-ath79 /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/staging_dir/host/bin/fakeroot /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/staging_dir/host/bin/apk --root /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/root.orig-ath79 --keys-dir /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main --no-logfile --preserve-env list --quiet --manifest --no-network --repositories-file /dev/null | sort | sed 's/ / - /'  > /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/bin/targets/ath79/generic/openwrt-ath79-generic-comfast_cf-wa350.manifest
+-- مرحلة الصور imagebuilder/BuildImage (آخر 20) --
+11071:cat /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9563_comfast_cf-wa350.dtb >> /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin
+11072:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/staging_dir/host/bin/lzma e /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin -lc1 -lp2 -pb2  /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin.new
+11073:mkimage -A mips -O linux -T kernel -C lzma -a 0x80060000 -e 0x80060000 -n 'MIPS OpenWrt Linux-6.18.52'   -d /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin.new
+11080:mv /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin.new /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin
+11081:mkimage -A mips -O linux -T kernel -C lzma -a 0x80060000 -e 0x80060000 -n 'MIPS OpenWrt Linux-6.18.52'   -d /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin.new
+11088:mv /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin.new /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin
+11089:cp /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/bin/targets/ath79/generic/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin
+11090:[ -f /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin -a -f /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/root.squashfs ]
+11091:DEVICE_ID="comfast_cf-wa350" SOURCE_DATE_EPOCH=1789768095 FILE_NAME="openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin" FILE_DIR="/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp" FILE_TYPE="kernel" FILE_FILESYSTEM="initramfs" DEVICE_IMG_PREFIX="openwrt-ath79-generic-comfast_cf-wa350" DEVICE_VENDOR="COMFAST" DEVICE_MODEL="CF-WA350" DEVICE_VARIANT="" DEVICE_ALT0_VENDOR="" DEVICE_ALT0_MODEL="" DEVICE_ALT0_VARIANT="" DEVICE_ALT1_VENDOR="" DEVICE_ALT1_MODEL="" DEVICE_ALT1_VARIANT="" DEVICE_ALT2_VENDOR="" DEVICE_ALT2_MODEL="" DEVICE_ALT2_VARIANT="" DEVICE_ALT3_VENDOR="" DEVICE_ALT3_MODEL="" DEVICE_ALT3_VARIANT="" DEVICE_ALT4_VENDOR="" DEVICE_ALT4_MODEL="" DEVICE_ALT4_VARIANT="" DEVICE_ALT5_VENDOR="" DEVICE_ALT5_MODEL="" DEVICE_ALT5_VARIANT="" DEVICE_TITLE="COMFAST CF-WA350" DEVICE_PACKAGES="kmod-ath10k-ct ath10k-firmware-qca9888-ct kmod-dsa-qca8k kmod-phy-qca83xx cfw-leds -swconfig -uboot-envtools" TARGET="ath79" SUBTARGET="generic" VERSION_NUMBER="SNAPSHOT" VERSION_CODE="r36341+2-7f347425eb" SUPPORTED_DEVICES="comfast,cf-wa350" KERNEL_SIZE="" IMAGE_SIZE="16000k" /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/scripts/json_add_image_info.py /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/json_info_files/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin.json
+11092:dd if=/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin >> /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin
+11096:dd if=/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin of=/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.new bs=64k conv=sync
+11100:mv /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.new /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin
+11101:dd if=/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/root.squashfs >> /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin
+11105:/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/staging_dir/host/bin/padjffs2 /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin  64
+11107:echo '{  "metadata_version": "1.1", "compat_version": "1.0",   "supported_devices":["comfast,cf-wa350"], "version": { "dist": "OpenWrt", "version": "SNAPSHOT", "revision": "r36341+2-7f347425eb", "target": "ath79/generic", "board": "comfast_cf-wa350" } }' | fwtool -I - /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin
+11108:sha256sum "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin" | cut -d" " -f1 > "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.sha256sum"
+11109:[ ! -s "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/key-build" -o ! -s "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/key-build.ucert" -o ! -s "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin" ] || { cp "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/key-build.ucert" "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.ucert" ; usign -S -m "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin" -s "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/key-build" -x "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.sig" ; ucert -A -c "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.ucert" -x "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.sig" ; fwtool -S "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.ucert" "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin" ; }
+11110:cp /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/bin/targets/ath79/generic/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin
+11111:DEVICE_ID="comfast_cf-wa350" SOURCE_DATE_EPOCH=1789768095 FILE_NAME="openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin" FILE_DIR="/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp" FILE_TYPE=sysupgrade FILE_FILESYSTEM="squashfs" DEVICE_IMG_PREFIX="openwrt-ath79-generic-comfast_cf-wa350" DEVICE_VENDOR="COMFAST" DEVICE_MODEL="CF-WA350" DEVICE_VARIANT="" DEVICE_ALT0_VENDOR="" DEVICE_ALT0_MODEL="" DEVICE_ALT0_VARIANT="" DEVICE_ALT1_VENDOR="" DEVICE_ALT1_MODEL="" DEVICE_ALT1_VARIANT="" DEVICE_ALT2_VENDOR="" DEVICE_ALT2_MODEL="" DEVICE_ALT2_VARIANT="" DEVICE_ALT3_VENDOR="" DEVICE_ALT3_MODEL="" DEVICE_ALT3_VARIANT="" DEVICE_ALT4_VENDOR="" DEVICE_ALT4_MODEL="" DEVICE_ALT4_VARIANT="" DEVICE_ALT5_VENDOR="" DEVICE_ALT5_MODEL="" DEVICE_ALT5_VARIANT="" DEVICE_TITLE="COMFAST CF-WA350" DEVICE_PACKAGES="kmod-ath10k-ct ath10k-firmware-qca9888-ct kmod-dsa-qca8k kmod-phy-qca83xx cfw-leds -swconfig -uboot-envtools" TARGET="ath79" SUBTARGET="generic" VERSION_NUMBER="SNAPSHOT" VERSION_CODE="r36341+2-7f347425eb" SUPPORTED_DEVICES="comfast,cf-wa350" KERNEL_SIZE="" IMAGE_SIZE="16000k" /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/scripts/json_add_image_info.py /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/json_info_files/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.json
+11113:make[5]: Leaving directory '/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/target/linux/ath79/image'
+-- cfw-leds (آخر 15) --
+2668:mkdir -p /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/cfw-leds/.pkgdir/cfw-leds
+2669:install -d -m0755 /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/cfw-leds/.pkgdir/cfw-leds/usr/bin
+2670:install -m0755 ./files/cfw_led_ctrl /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/cfw-leds/.pkgdir/cfw-leds/usr/bin/cfw_led_ctrl
+2671:install -d -m0755 /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/cfw-leds/.pkgdir/cfw-leds/etc/init.d
+2672:install -m0755 ./files/cfw-leds.init /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/cfw-leds/.pkgdir/cfw-leds/etc/init.d/cfw-leds
+2673:touch /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/cfw-leds/.pkgdir/cfw-leds.installed
+2675:SHELL= flock /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/tmp/.root-copy.flock -c 'cp -fpR /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/cfw-leds/.pkgdir/cfw-leds/. /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/staging_dir/target-mips_24kc_musl/root-ath79/'
+2676:touch /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/staging_dir/target-mips_24kc_musl/root-ath79/stamp/.cfw-leds_installed
+2677:echo "cfw-leds" >> /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/staging_dir/target-mips_24kc_musl/pkginfo/cfw-leds.default.install
+2678:make[3]: Leaving directory '/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/package/utils/cfw-leds'
+2679:time: package/utils/cfw-leds/compile#12.02#3.21#54.77
+9375:( 41/145) Installing cfw-leds (1)
+9495:Enabling cfw-leds
+11091:DEVICE_ID="comfast_cf-wa350" SOURCE_DATE_EPOCH=1789768095 FILE_NAME="openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin" FILE_DIR="/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp" FILE_TYPE="kernel" FILE_FILESYSTEM="initramfs" DEVICE_IMG_PREFIX="openwrt-ath79-generic-comfast_cf-wa350" DEVICE_VENDOR="COMFAST" DEVICE_MODEL="CF-WA350" DEVICE_VARIANT="" DEVICE_ALT0_VENDOR="" DEVICE_ALT0_MODEL="" DEVICE_ALT0_VARIANT="" DEVICE_ALT1_VENDOR="" DEVICE_ALT1_MODEL="" DEVICE_ALT1_VARIANT="" DEVICE_ALT2_VENDOR="" DEVICE_ALT2_MODEL="" DEVICE_ALT2_VARIANT="" DEVICE_ALT3_VENDOR="" DEVICE_ALT3_MODEL="" DEVICE_ALT3_VARIANT="" DEVICE_ALT4_VENDOR="" DEVICE_ALT4_MODEL="" DEVICE_ALT4_VARIANT="" DEVICE_ALT5_VENDOR="" DEVICE_ALT5_MODEL="" DEVICE_ALT5_VARIANT="" DEVICE_TITLE="COMFAST CF-WA350" DEVICE_PACKAGES="kmod-ath10k-ct ath10k-firmware-qca9888-ct kmod-dsa-qca8k kmod-phy-qca83xx cfw-leds -swconfig -uboot-envtools" TARGET="ath79" SUBTARGET="generic" VERSION_NUMBER="SNAPSHOT" VERSION_CODE="r36341+2-7f347425eb" SUPPORTED_DEVICES="comfast,cf-wa350" KERNEL_SIZE="" IMAGE_SIZE="16000k" /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/scripts/json_add_image_info.py /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/json_info_files/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin.json
+11111:DEVICE_ID="comfast_cf-wa350" SOURCE_DATE_EPOCH=1789768095 FILE_NAME="openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin" FILE_DIR="/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp" FILE_TYPE=sysupgrade FILE_FILESYSTEM="squashfs" DEVICE_IMG_PREFIX="openwrt-ath79-generic-comfast_cf-wa350" DEVICE_VENDOR="COMFAST" DEVICE_MODEL="CF-WA350" DEVICE_VARIANT="" DEVICE_ALT0_VENDOR="" DEVICE_ALT0_MODEL="" DEVICE_ALT0_VARIANT="" DEVICE_ALT1_VENDOR="" DEVICE_ALT1_MODEL="" DEVICE_ALT1_VARIANT="" DEVICE_ALT2_VENDOR="" DEVICE_ALT2_MODEL="" DEVICE_ALT2_VARIANT="" DEVICE_ALT3_VENDOR="" DEVICE_ALT3_MODEL="" DEVICE_ALT3_VARIANT="" DEVICE_ALT4_VENDOR="" DEVICE_ALT4_MODEL="" DEVICE_ALT4_VARIANT="" DEVICE_ALT5_VENDOR="" DEVICE_ALT5_MODEL="" DEVICE_ALT5_VARIANT="" DEVICE_TITLE="COMFAST CF-WA350" DEVICE_PACKAGES="kmod-ath10k-ct ath10k-firmware-qca9888-ct kmod-dsa-qca8k kmod-phy-qca83xx cfw-leds -swconfig -uboot-envtools" TARGET="ath79" SUBTARGET="generic" VERSION_NUMBER="SNAPSHOT" VERSION_CODE="r36341+2-7f347425eb" SUPPORTED_DEVICES="comfast,cf-wa350" KERNEL_SIZE="" IMAGE_SIZE="16000k" /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/scripts/json_add_image_info.py /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/json_info_files/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.json
+-- تحذيرات الحجم --
+0
+-- آخر 25 سطرًا في السجل --
+[ ! -s "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/key-build" -o ! -s "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/key-build.ucert" -o ! -s "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin" ] || { cp "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/key-build.ucert" "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.ucert" ; usign -S -m "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin" -s "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/key-build" -x "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.sig" ; ucert -A -c "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.ucert" -x "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.sig" ; fwtool -S "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.ucert" "/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin" ; }
+cp /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/bin/targets/ath79/generic/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin
+DEVICE_ID="comfast_cf-wa350" SOURCE_DATE_EPOCH=1789768095 FILE_NAME="openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin" FILE_DIR="/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp" FILE_TYPE=sysupgrade FILE_FILESYSTEM="squashfs" DEVICE_IMG_PREFIX="openwrt-ath79-generic-comfast_cf-wa350" DEVICE_VENDOR="COMFAST" DEVICE_MODEL="CF-WA350" DEVICE_VARIANT="" DEVICE_ALT0_VENDOR="" DEVICE_ALT0_MODEL="" DEVICE_ALT0_VARIANT="" DEVICE_ALT1_VENDOR="" DEVICE_ALT1_MODEL="" DEVICE_ALT1_VARIANT="" DEVICE_ALT2_VENDOR="" DEVICE_ALT2_MODEL="" DEVICE_ALT2_VARIANT="" DEVICE_ALT3_VENDOR="" DEVICE_ALT3_MODEL="" DEVICE_ALT3_VARIANT="" DEVICE_ALT4_VENDOR="" DEVICE_ALT4_MODEL="" DEVICE_ALT4_VARIANT="" DEVICE_ALT5_VENDOR="" DEVICE_ALT5_MODEL="" DEVICE_ALT5_VARIANT="" DEVICE_TITLE="COMFAST CF-WA350" DEVICE_PACKAGES="kmod-ath10k-ct ath10k-firmware-qca9888-ct kmod-dsa-qca8k kmod-phy-qca83xx cfw-leds -swconfig -uboot-envtools" TARGET="ath79" SUBTARGET="generic" VERSION_NUMBER="SNAPSHOT" VERSION_CODE="r36341+2-7f347425eb" SUPPORTED_DEVICES="comfast,cf-wa350" KERNEL_SIZE="" IMAGE_SIZE="16000k" /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/scripts/json_add_image_info.py /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/json_info_files/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.json
+IPKG_INSTROOT=/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/root.orig-ath79 /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/staging_dir/host/bin/fakeroot /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/staging_dir/host/bin/apk --root /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/root.orig-ath79 --keys-dir /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main --no-logfile --preserve-env list --quiet --manifest --no-network --repositories-file /dev/null | sort | sed 's/ / - /'  > /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/bin/targets/ath79/generic/openwrt-ath79-generic-comfast_cf-wa350.manifest
+make[5]: Leaving directory '/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/target/linux/ath79/image'
+make[4]: Leaving directory '/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/target/linux/ath79'
+make[3]: Leaving directory '/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/target/linux'
+time: target/linux/install#355.40#134.30#819.29
+make[2]: Leaving directory '/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main'
+export MAKEFLAGS= ;make -w -r package/index
+make[2]: Entering directory '/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main'
+Generating package index...
+Index has 60 packages (of which 60 are new)
+Index has 72 packages (of which 72 are new)
+Index has 13 packages (of which 13 are new)
+Index has 2 packages (of which 2 are new)
+make[2]: Leaving directory '/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main'
+export MAKEFLAGS= ;make -w -r json_overview_image_info
+make[2]: Entering directory '/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main'
+WORK_DIR=/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/build_dir/target-mips_24kc_musl/json_info_files /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/scripts/json_overview_image_info.py /run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main/bin/targets/ath79/generic/profiles.json 
+make[2]: Leaving directory '/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main'
+export MAKEFLAGS= ;make -w -r checksum
+make[2]: Entering directory '/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main'
+make[2]: Leaving directory '/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main'
+make[1]: Leaving directory '/run/media/ha-linux/1fc2bd35-62cd-4285-b701-f8fe917d9843/home/ha-linux/openwrt-official/owrt-main'
+
+==================== 4) أدلة build_dir — هل بُنيت شجرة الجهاز أصلًا؟ ====================
+-- مجلد linux-ath79_generic --
+total 197308
+drwxr-xr-x 13 ha-linux ha-linux    32768 Sep 19 21:46 .
+drwxr-xr-x 88 ha-linux ha-linux     4096 Sep 19 21:47 ..
+drwxr-xr-x  3 ha-linux ha-linux     4096 Sep 18 20:18 ath10k-ct-regular
+drwxr-xr-x  5 ha-linux ha-linux     4096 Sep 19 21:36 base-files
+-rw-r--r--  1 ha-linux ha-linux  2955993 Sep 19 21:46 comfast_cf-wa350-kernel.bin
+drwxrwxr-x  5 ha-linux ha-linux     4096 Sep 19 21:27 gpio-button-hotplug
+-rw-r--r--  1 ha-linux ha-linux     8859 Sep 19 21:45 image-ar1022_iodata_wn-ag300dgr.dtb
+-rw-r--r--  1 ha-linux ha-linux     6083 Sep 19 21:45 image-ar7161_adtran_bsap1800-v2.dtb
+-rw-r--r--  1 ha-linux ha-linux     6075 Sep 19 21:45 image-ar7161_adtran_bsap1840.dtb
+-rw-r--r--  1 ha-linux ha-linux     7040 Sep 19 21:45 image-ar7161_aruba_ap-105.dtb
+-rw-r--r--  1 ha-linux ha-linux     8106 Sep 19 21:45 image-ar7161_aruba_ap-175.dtb
+-rw-r--r--  1 ha-linux ha-linux     8466 Sep 19 21:45 image-ar7161_buffalo_wzr-600dhp.dtb
+-rw-r--r--  1 ha-linux ha-linux     8474 Sep 19 21:45 image-ar7161_buffalo_wzr-hp-ag300h.dtb
+-rw-r--r--  1 ha-linux ha-linux     8006 Sep 19 21:45 image-ar7161_dlink_dir-825-b1.dtb
+-rw-r--r--  1 ha-linux ha-linux     8117 Sep 19 21:45 image-ar7161_fortinet_fap-220-b.dtb
+-rw-r--r--  1 ha-linux ha-linux     6954 Sep 19 21:45 image-ar7161_jjplus_ja76pf2.dtb
+-rw-r--r--  1 ha-linux ha-linux     7208 Sep 19 21:45 image-ar7161_meraki_mr16.dtb
+-rw-r--r--  1 ha-linux ha-linux     6904 Sep 19 21:46 image-ar7161_netgear_wndap360.dtb
+-rw-r--r--  1 ha-linux ha-linux     8177 Sep 19 21:46 image-ar7161_netgear_wndr3700-v2.dtb
+-rw-r--r--  1 ha-linux ha-linux     8301 Sep 19 21:46 image-ar7161_netgear_wndr3700.dtb
+-rw-r--r--  1 ha-linux ha-linux     8185 Sep 19 21:46 image-ar7161_netgear_wndr3800.dtb
+-rw-r--r--  1 ha-linux ha-linux     8189 Sep 19 21:46 image-ar7161_netgear_wndr3800ch.dtb
+-rw-r--r--  1 ha-linux ha-linux     8177 Sep 19 21:46 image-ar7161_netgear_wndrmac-v1.dtb
+-rw-r--r--  1 ha-linux ha-linux     8189 Sep 19 21:46 image-ar7161_netgear_wndrmac-v2.dtb
+-- مجلد image-* (مخرجات بناء الصور) --
+-- بحث عن أي dtb لـ wa350 --
+build_dir/target-mips_24kc_musl/json_info_files/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.json
+build_dir/target-mips_24kc_musl/json_info_files/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin.json
+build_dir/target-mips_24kc_musl/linux-ath79_generic/comfast_cf-wa350-kernel.bin
+build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin
+build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin
+build_dir/target-mips_24kc_musl/linux-ath79_generic/tmp/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin.sha256sum
+build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9563_comfast_cf-wa350.dtb
+-- أي dtb مبني تحت linux-ath79_generic (أول 15) --
+build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9563_nec_wg1200cr.dtb
+build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar9344_comfast_cf-e120a-v3.dtb
+build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_nec_wg1800hp.dtb
+build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9533_tplink_tl-wr810n-v2.dtb
+build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_openmesh_a60.dtb
+build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9563_rosinson_wr818.dtb
+build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_engenius_ews660ap.dtb
+build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9531_alfa-network_n2q.dtb
+build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar9344_ocedo_raccoon.dtb
+build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9531_telco_t1.dtb
+build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9561_tplink_eap225-wall-v2.dtb
+build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar9344_teltonika_rut955.dtb
+build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar7161_fortinet_fap-220-b.dtb
+build_dir/target-mips_24kc_musl/linux-ath79_generic/image-ar9342_ubnt_nanostation-m-xw.dtb
+build_dir/target-mips_24kc_musl/linux-ath79_generic/image-qca9558_devolo_dvl1750x.dtb
+-- هل النواة مبنية؟ --
+-rwxr-xr-x 1 ha-linux ha-linux 66877392 Sep 19 21:44 build_dir/target-mips_24kc_musl/linux-ath79_generic/linux-6.18.52/vmlinux
+-- مصدر DTS موجود؟ --
+-rw-rw-r-- 1 ha-linux ha-linux 4877 Sep 19 01:33 target/linux/ath79/dts/qca9563_comfast_cf-wa350.dts
+
+==================== 5) مجلد files-1 — هل حُقن في الصورة؟ ====================
+CONFIG_TARGET_ROOTFS_DIR=CONFIG_TARGET_ROOTFS_DIR=""
+(إذا كانت القيمة "" فمعناه أن files-1 لم يُستخدم في البناء إطلاقًا)
+files-1/www/luci-static/resources/view/wizard.js
+files-1/etc/uci-defaults/98-llpd-setting
+files-1/etc/uci-defaults/99-asu-defaults-general
+files-1/etc/uci-defaults/01_uhttpd_ubus
+files-1/etc/config/wizard
+files-1/etc/init.d/wizard
+files-1/etc/wizerd/public.key
+files-1/usr/share/rpcd/acl.d/luci-app-wizard.json
+files-1/usr/share/luci/menu.d/luci-app-wizard.json
+-- حجم files-1 --
+140K	files-1
+
+==================== 6) ملفات الصور + metadata ====================
+total 16068
+drwxr-xr-x 3 ha-linux ha-linux    4096 Sep 19 03:43 .
+drwxr-xr-x 3 ha-linux ha-linux    4096 Sep 11 07:10 ..
+-rw-r--r-- 1 ha-linux ha-linux    1506 Sep 19 21:28 config.buildinfo
+-rw-r--r-- 1 ha-linux ha-linux     485 Sep 19 21:28 feeds.buildinfo
+-rw-r--r-- 1 ha-linux ha-linux 7951051 Sep 19 21:47 openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin
+-rw-r--r-- 1 ha-linux ha-linux 8454420 Sep 19 21:47 openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin
+-rw-r--r-- 1 ha-linux ha-linux    4850 Sep 19 21:47 openwrt-ath79-generic-comfast_cf-wa350.manifest
+drwxr-xr-x 2 ha-linux ha-linux    4096 Sep 19 21:47 packages
+-rw-r--r-- 1 ha-linux ha-linux    1670 Sep 19 21:48 profiles.json
+-rw-r--r-- 1 ha-linux ha-linux     698 Sep 19 21:49 sha256sums
+-rw-r--r-- 1 ha-linux ha-linux      20 Sep 19 21:28 version.buildinfo
+-- كل ملفات json في مجلد الهدف --
+bin/targets/ath79/generic/profiles.json
+-- حجم sysupgrade وinitramfs --
+ 8454420 bin/targets/ath79/generic/openwrt-ath79-generic-comfast_cf-wa350-squashfs-sysupgrade.bin
+ 7951051 bin/targets/ath79/generic/openwrt-ath79-generic-comfast_cf-wa350-initramfs-kernel.bin
+16405471 total
+
+==================== 7) تشريح sysupgrade.bin بدقّة (تصحيح لخطأ block-4a) ====================
+SIZE=8454420
+uImage: data_size=2955929  load=0x80060000  entry=0x80060000
+magic=27051956  os/arch/type/comp=d983163a   (المتوقع: 27051956 و 05050203)
+تحذير: حقول os/arch/type/comp غير قياسية (05=Linux 05=MIPS 02=kernel 03=lzma)
+نهاية_البيانات=2955993
+-- أول hsqs حقيقي في الملف (إزاحة بايت) --
+3014656:hsqs
+-- كل d00dfeed (توقيع DTB) في الملف كله --
+(فارغ = متوقع، لأن الـ DTB مضغوط داخل lzma)
+-- ما الذي يقع بين نهاية uImage و hsqs؟ --
+GAP_START=2955993
+ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  >................<
+ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  >................<
+ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  >................<
+ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  >................<
+ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  >................<
+ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  >................<
+-- أول 128 بايت من منطقة hsqs --
+HSQS_OFFSET=3014656
+ 68 73 71 73 fc 04 00 00 9f b1 ad 6a 00 00 04 00  >hsqs.......j....<
+ 25 00 00 00 04 00 12 00 c0 02 01 00 04 00 00 00  >%...............<
+ 5d 05 62 23 00 00 00 00 ec 28 52 00 00 00 00 00  >].b#.....(R.....<
+ e4 28 52 00 00 00 00 00 ff ff ff ff ff ff ff ff  >.(R.............<
+ 48 c8 51 00 00 00 00 00 6c ed 51 00 00 00 00 00  >H.Q.....l.Q.....<
+ f6 21 52 00 00 00 00 00 ce 28 52 00 00 00 00 00  >.!R......(R.....<
+ fd 37 7a 58 5a 00 00 01 69 22 de 36 03 c0 fc d9  >.7zXZ...i".6....<
+ 09 80 80 10 21 01 0c 00 79 3c c6 43 e1 a0 18 ef  >....!...y<.C....<
+-- آخر 64 بايت من sysupgrade (metadata؟) --
+ 61 74 68 37 39 2f 67 65 6e 65 72 69 63 22 2c 20  >ath79/generic", <
+ 22 62 6f 61 72 64 22 3a 20 22 63 6f 6d 66 61 73  >"board": "comfas<
+ 74 5f 63 66 2d 77 61 33 35 30 22 20 7d 20 7d 0a  >t_cf-wa350" } }.<
+ 46 57 78 30 2a 6d 92 07 01 00 00 00 00 00 01 10  >FWx0*m..........<
+
+==================== 8) تشريح initramfs-kernel.bin ====================
+SIZE=7951051  data_size=7950987  الفرق_عن_الحجم=0
+(الفرق يجب أن يكون 0 أو صغيرًا جدًا)
+-- أول 48 بايت — اسم الصورة --
+MIPS OpenWrt Linux-6.18.52......
+-- البحث عن نموذج الجهاز في initramfs (غير متوقع لأن DTB مضغوط) --
+0
+-- أول d00dfeed في initramfs --
+
+==================== 9) فك ضغط النواة فعليًا — الدليل القاطع على وجود DTB صحيح ====================
+حجم_الجزء_المضغوط=2955929
+أول_16_بايت:
+ 6d 00 00 80 00 5b a2 98 00 00 00 00 00 00 00 6f
+ fd ff ff a3 b7 7f 4c 3f 8c e8 ab 07 70 60 98 72
+DECOMPRESSED=OK  الحجم_المفكوك=10003035
+-- البحث عن نموذج الجهاز --
+CF-WA350_count=1
+comfast_count=1
+-- هل الـ DTB مرفق في نهاية النواة المفكوكة؟ --
+��96064:�
+��94208:�
+-- سلاسل الشجرة (comfast / qca9563 / wdt) --
+comfast,cf-wa350
+&COMFAST CF-WA350
+gpio-leds
+linux,wdt-gpio
+qca,qca9563
+
+==================== 10) بصمات ومقارنة بالنسخة التي عملت ====================
+HEAD=949b9f785c
+ORIGIN=513ba98c5d
+BASE_upstream=7f347425eb
+N_COMMITS_OVER_BASE=2
+DIRTY=[ M package/utils/cfw-leds/LICENSE| M package/utils/cfw-leds/Makefile| M package/utils/cfw-leds/files/cfw-leds.init| M package/utils/cfw-leds/files/cfw_led_ctrl|?? build-clean-2026-09-19-2121.log|?? build.log|?? files-1/|]
+GCC=CONFIG_GCC_VERSION="14.4.0"
+KERNEL_VER=
+DEVEL=0
+THEME=CONFIG_PACKAGE_luci-theme-bootstrap=y
+WATCHCAT=CONFIG_PACKAGE_watchcat=y
+MD5_SYSUPGRADE=fa4910aeec02505a01471c27941f65f0
+MD5_INITRAMFS=5d558047100d06e7c4775a0ed6338f6f
+MD5_DTS=2dc95e2be1f754b0f75573dc34d17972
+MD5_GENERIC_MK=e2240d752da8839adb244ae5f998c788
+TMP=/tmp/wa350c.158850
+
+==================== النتيجة ====================
+انسخ لي كل ما ظهر أعلاه كما هو، خصوصًا الأقسام 1 و 3 و 4 و 9.
+لا تُعد البناء، ولا تعمل git checkout / git stash، ولا تدفع شيئًا
+قبل أن أرى هذا المخرج — أي تغيير الآن يمسح الأدلة.
+[ble: elapsed 59.407s (CPU 27.6%)] ./block-4c.sh
+
+ha-linux  ~/     
+اين ان المشكله صريحه وليس فقط من نسخه الجيتهوب كما كنت اشك واذا السكريبت نتائجه لا توضح السبب الفعلي فما علينا الا عمل العمليه الجراحيه وعمل الهمدسه العكسية للنسخه sysupgrade.bin واستخراج ملف dts  منها ومقارنته بملفنا 
